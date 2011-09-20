@@ -181,7 +181,7 @@ module Resque
     def reserve
       queues.each do |queue|
         log! "Checking #{queue}"
-        if job = Resque.reserve(queue)
+        if job = Resque::Job.reserve(queue)
           log! "Found job on #{queue}"
           return job
         end
